@@ -28,14 +28,7 @@ async function main() {
 
   // Get Order ID
   console.log('Order created, waiting for funds!');
-  console.log(
-    'Sent: ',
-    response.payload.amount,
-    ' ',
-    origin,
-    ' to: ',
-    response.payload.targetAddress,
-  );
+  console.log('Sent: ', response.payload.amount, ' ', origin, ' to: ', response.payload.targetAddress);
   const orderId = response.uid;
 
   // Monitor transactions processing.
