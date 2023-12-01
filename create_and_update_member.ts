@@ -1,7 +1,7 @@
 import { API_KEY, Build5, https } from "@build-5/client";
 import { Dataset, Network } from "@build-5/interfaces";
-import { address } from "./address";
-import { getSignature } from "./utils";
+import { address } from "./utils/address";
+import { getSignature } from "./utils/utils";
 
 async function main() {
     const origin = Build5.TEST;
@@ -18,7 +18,7 @@ async function main() {
 
     const apiOrigin = Build5.TEST;
     const member = await https(apiOrigin).dataset(Dataset.MEMBER).id(uid).get();
-    console.log(member);
+    console.log('Member created: ', member?.uid);
     const name = Math.random().toString().split('.')[1];
 
     const signature = await getSignature(uid, address);
@@ -29,15 +29,15 @@ async function main() {
         signature: signature.signature,
         publicKey: {
             hex: signature.publicKey,
-            network: Network.SMR,
+            network: Network.RMS,
         },
         projectApiKey: API_KEY[origin],
         body: {
-            name,
+            name: name + '_fun',
         },
     });
 
-    console.log(response);
+    console.log('Member updated: ', response);
 }
 
 main();
