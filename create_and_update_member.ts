@@ -1,7 +1,7 @@
 import { API_KEY, Build5, https } from "@build-5/client";
 import { Dataset, Network } from "@build-5/interfaces";
-import { address } from "./utils/address";
-import { getSignature } from "./utils/utils";
+import { address } from "./utils/secret";
+import { walletSign } from "./utils/utils";
 
 async function main() {
     const origin = Build5.TEST;
@@ -22,7 +22,7 @@ async function main() {
     console.log('Member created: ', member?.uid);
     const name = Math.random().toString().split('.')[1];
 
-    const signature = await getSignature(uid, address);
+    const signature = await walletSign(uid, address);
     response = await https(origin)
     .dataset(Dataset.MEMBER)
     .update({
