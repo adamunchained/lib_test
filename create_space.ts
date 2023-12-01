@@ -1,5 +1,5 @@
 import { API_KEY, Build5, https } from '@build-5/client';
-import { Dataset, Space } from '@build-5/interfaces';
+import { Dataset, Network, Space } from '@build-5/interfaces';
 import { address } from './utils/secret';
 import { walletSign } from './utils/utils';
 
@@ -13,6 +13,10 @@ async function main() {
       .create({
         address: address.bech32,
         signature: userSign.signature,
+        publicKey: {
+          hex: userSign.publicKey,
+          network: Network.RMS,
+        },
         // Use SOONAVERSE TEST - wen.soonaverse.com
         projectApiKey: API_KEY[origin],
         body: {

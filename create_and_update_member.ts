@@ -24,6 +24,7 @@ async function main() {
   console.log('Member created: ', member?.uid);
   const name = Math.random().toString().split('.')[1];
 
+  console.log(uid, address);
   const signature = await walletSign(uid, address);
   response = await https(origin)
     .dataset(Dataset.MEMBER)
