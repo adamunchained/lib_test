@@ -8,6 +8,7 @@ async function main() {
     let response = await https(origin).dataset(Dataset.MEMBER).create({
         address: address.bech32,
         signature: '',
+        // Use SOONAVERSE TEST - wen.soonaverse.com
         projectApiKey: API_KEY[origin],
         body: {
             address: address.bech32,
@@ -31,6 +32,7 @@ async function main() {
             hex: signature.publicKey,
             network: Network.RMS,
         },
+        // Use SOONAVERSE TEST - wen.soonaverse.com
         projectApiKey: API_KEY[origin],
         body: {
             name: name + '_fun',
